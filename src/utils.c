@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/philo.h"
+#include "philo.h"
 
 void	wait_time(t_philo *philo, u_int64_t time)
 {
@@ -36,8 +36,8 @@ long	ft_atol(const char *nptr)
 {
 	long	sign;
 	long	result;
-	int	i;
-	
+	int		i;
+
 	i = 0;
 	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
 		i++;
