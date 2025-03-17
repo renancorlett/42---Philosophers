@@ -1,0 +1,1 @@
+./philo 5 800 200 200 7 | grep "is eating" | cut -d' ' -f2 | sort | uniq -c
