@@ -15,20 +15,22 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 NAME = philo
 
-SRC = src/main.c src/init.c src/utils.c src/routines.c \
-	  src/activities.c src/checkers.c
+SRC = main.c init.c utils.c routines.c activities.c checkers.c	 
 
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
+	@echo "\033[0;32mSuccess!\033[0m"
 	
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -pthread $(OBJ) -o $(NAME)
 
 clean:
 	@rm -rf $(OBJ)
+	@echo "\033[0;31mObjects deleted!\033[0m"
 
 fclean: clean
 	@rm -rf $(NAME)
+	@echo "\033[0;31mAll clean!\033[0m"
 
 re: fclean all
