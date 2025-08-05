@@ -10,11 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+//Data->Threads->Philos->Forks
 //This function avoids deadlocks(disputes for the same resources). Every philo wants to take the left fork and will starve
 //Thread is a line of execution inside the program using shared memory and resources (faster and lighter), doesn't need to be copied for the main process - Need for synchronization
 //Fork is a new process(child process) copied from the (father process) and has its own memory, can execute different tasks (slowly and heavily) - No need for synchronization
 //Mutex is a mechanism that controls access to the shared resource, ensuring that only one thread uses the resource at a time, avoiding data race
-//Data race is when two or more threads try to access the same resources and modify this data, the final data could be wrong if this process is not handled
+//Data race is when two or more threads try to access the same resources and modify this data; the final data could be wrong if this process is not handled
 
 #include "philo.h"
 
