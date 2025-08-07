@@ -15,7 +15,7 @@
 //Thread is a line of execution inside the program using shared memory and resources (faster and lighter), doesn't need to be copied for the main process - Need for synchronization
 //Fork is a new process(child process) copied from the (father process) and has its own memory, can execute different tasks (slowly and heavily) - No need for synchronization
 //Mutex is a mechanism that controls access to the shared resource, ensuring that only one thread uses the resource at a time, avoiding data race
-//Data race is when two or more threads try to access the same resources and modify this data; the final data could be wrong if this process is not handled
+//Data race is when two or more threads try to access the same resources and modify the same data; the final data could be wrong if this process is not handled properly.
 
 #include "philo.h"
 
@@ -77,7 +77,7 @@ static t_data	*init_threads(t_data *data) //Init threads and mutex for each phil
 		return (NULL); //If the allocation fails, return ERROR
 	pthread_mutex_init(&data->lock, NULL); //Init global mutex that controls shared variables and log, blocking each one
 	pthread_mutex_init(&data->log, NULL);  //Block the logs to avoid mixed messages
-	pthread_mutex_init(&data->finish_lock, NULL); //Protect the variable avoid readingg/writing at simuntaneous
+	pthread_mutex_init(&data->finish_lock, NULL); //Protect the variable avoid reading/writing at simuntaneous
 	i = 0;
 	while (i < data->n_philos) //Init the fork mutex individualy for each philo
 		pthread_mutex_init(&data->forks[i++], NULL); //Null paremeter is for use the pattern conf. of the system
