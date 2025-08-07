@@ -28,7 +28,7 @@ bool	is_dead(t_philo *philo)
 
 	dead = false; //Init saying that the philo is not dead
 	pthread_mutex_lock(&philo->lock); //Block the philo for protection
-	pthread_mutex_lock(&philo->data->finish_lock);//Block the philo for protection
+	pthread_mutex_lock(&philo->data->finish_lock);//Block the log philo for protection
 	if (get_time() >= philo->t_death || philo->data->finish) //Verifies if it passes the time of the death and if the simulation was marked as finish
 	{
 		if (!philo->data->finish) //If is not marked as finish
@@ -37,7 +37,7 @@ bool	is_dead(t_philo *philo)
 	}
 	pthread_mutex_lock(&philo->data->lock); //Block another mutex for execution of is_full
 	is_full(philo);
-	if (philo->data->philos_full == philo->data->n_philos) //Verifies if the number of philhos is equal to the full philos
+	if (philo->data->philos_full == philo->data->n_philos) //Verifies if the number of philos is equal to the full philos
 		philo->data->finish = true; //If is, mark as true
 	dead = philo->data->finish; //Define dead as actual value for finish
 	pthread_mutex_unlock(&philo->data->lock); //Unblock in the reverse way
@@ -88,4 +88,5 @@ int	check_input(char **av)
 		return (1);
 	return (0);
 }
+
 
